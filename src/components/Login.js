@@ -1,10 +1,16 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../actions/userActions';
 import { useHistory } from "react-router-dom";
-import BookmarkApi from "./BookmarkApi";
 import './Login.css';
 
-function Login({ setToken }) {
+function Login() {
     const history = useHistory();
+    const dispatch = useDispatch();
+    const users = useSelector(store => store.users);
+    console.log("LOGIN - users", users);
+    console.log("LOGIN - username", users.username);
+
     const initialState = {
         username: "",
         password: "",
@@ -22,19 +28,20 @@ function Login({ setToken }) {
 
     async function handleSubmit(evt) {
         evt.preventDefault();
-        let data;
-        let token;
+        // let data;
+        // let token;
 
-        try {
-            data = {
-                username: formData.username,
-                password: formData.password
-            };
-            token = await BookmarkApi.login(data);
-        } catch (errors) {
-            return setFormData(data => ({ ...data, errors }));
-        }
-        setToken(token);
+        // try {
+        //     data = {
+        //         username: formData.username,
+        //         password: formData.password
+        //     };
+        //     token = await BookmarkApi.login(data);
+        // } catch (errors) {
+        //     return setFormData(data => ({ ...data, errors }));
+        // }
+        // setToken(token);
+        dispatch(login(formData));
         history.push("/");
     }
 

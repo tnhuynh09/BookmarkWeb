@@ -1,8 +1,8 @@
-// import posts from './posts';
+import users from './userReducer';
 // import titles from './titles';
 import { combineReducers } from "redux";
 
 export default combineReducers({
-    //   posts,
+    users,
     //   titles,
 });

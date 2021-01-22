@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { registerUser } from '../actions/userActions';
 import { useHistory } from "react-router-dom";
-import BookmarkApi from "./BookmarkApi";
 import './Register.css';
 
 function Register({ setToken }) {
     const history = useHistory();
+    const dispatch = useDispatch();
+    const users = useSelector(store => store.users);
     const initialState = {
         first_name: "",
         last_name: "",
@@ -26,24 +29,25 @@ function Register({ setToken }) {
 
     async function handleSubmit(evt) {
         evt.preventDefault();
-        let data;
-        let token;
+        // let data;
+        // let token;
 
-        try {
-            data = {
-                first_name: formData.first_name || undefined,
-                last_name: formData.last_name || undefined,
-                username: formData.username,
-                email: formData.email || undefined,
-                password: formData.password,
-                profile_image: formData.email || undefined,
-            };
-            token = await BookmarkApi.register(data);
-        } catch (errors) {
-            return setFormData(data => ({ ...data, errors }));
-        }
+        // try {
+        //     data = {
+        //         first_name: formData.first_name || undefined,
+        //         last_name: formData.last_name || undefined,
+        //         username: formData.username,
+        //         email: formData.email || undefined,
+        //         password: formData.password,
+        //         profile_image: formData.email || undefined,
+        //     };
+        //     token = await BookmarkApi.register(data);
+        // } catch (errors) {
+        //     return setFormData(data => ({ ...data, errors }));
+        // }
+        // setToken(token);
 
-        setToken(token);
+        dispatch(registerUser(formData));
         history.push("/");
     }
 
