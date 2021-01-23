@@ -1,6 +1,6 @@
 import React from "react";
-import { NavLink, Link, useHistory } from 'react-router-dom';
-import { useSelector, useDispatch, connect } from 'react-redux';
+import { NavLink, useHistory } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import { loggedOut } from '../actions/userActions';
 import './NavBar.css';
 
@@ -27,7 +27,6 @@ function Navbar() {
             </button>
 
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
-
                 {!user.username ?
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item">
@@ -42,7 +41,10 @@ function Navbar() {
 
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item">
-                            <NavLink className="nav-link" to="/">HI {user.username}</NavLink>
+                            <NavLink className="nav-link" to="/profile">HI {user.username}</NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink className="nav-link" to="/bookshelf">BOOKSHELF</NavLink>
                         </li>
                         <li className="nav-item">
                             <NavLink className="nav-link" to="/" onClick={logout}>LOG OUT</NavLink>

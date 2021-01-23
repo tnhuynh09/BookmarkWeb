@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { REGISTER_USER, LOGGED_IN, LOGGED_OUT } from "./actionTypes";
+import { REGISTER_USER, LOGGED_IN, LOGGED_OUT, GET_PROFILE } from "./actionTypes";
 import { TOKEN_LOCALSTORAGE } from "../components/App.js";
 import useLocalStorage from "../hooks/useLocalStorage";
 
@@ -35,7 +35,6 @@ function loggedOut() {
 }
 
 function registerUser(data) {
-
     return async function (dispatch) {
         let res = await axios.post(`${BASE_URL}/users`, {
             username: data.username,
@@ -59,4 +58,33 @@ function registeredUser(user) {
     return { type: REGISTER_USER, payload: user };
 }
 
-export { login, loggedOut, registerUser }
+function getUserProfile(data) {
+    console.log("DATA", data);
+    console.log("USERNAME", data.username);
+    console.log("TOKEN", data.token);
+    // axios.defaults.headers.common[Authorization] = 'Bearer ' + data.token;
+
+    return async function (dispatch) {
+        let res = await axios.get(`${BASE_URL}/users/${data.username}`, {
+            headers: {
+                Authorization: 'Bearer ' + data.token
+            }
+        });
+
+        console.log("getUserProfile - res", res);
+
+        let user = {
+            username: data.username,
+            first_name: res.data.user.first_name,
+            token: data.token
+        }
+
+        dispatch(getProfile(user));
+    }
+}
+
+function getProfile(user) {
+    return { type: GET_PROFILE, payload: user };
+}
+
+export { login, loggedOut, registerUser, getUserProfile }
