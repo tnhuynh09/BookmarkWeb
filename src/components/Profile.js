@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserProfile } from '../actions/userActions';
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 // import './Profile.css';
 
 function Profile() {

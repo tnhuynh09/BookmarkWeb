@@ -1,8 +1,8 @@
 import users from './userReducer';
-// import titles from './titles';
+import books from './bookReducer';
 import { combineReducers } from "redux";
 
 export default combineReducers({
     users,
-    //   titles,
+    books,
 });

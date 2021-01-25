@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { getUserProfile } from '../actions/userActions';
-import { useHistory } from "react-router-dom";
+import { getBooks } from '../actions/bookActions';
+// import { useHistory } from "react-router-dom";
+import BookCard from './BookCard'
 // import './Search.css';
 
 function Search() {
     const dispatch = useDispatch();
-    const users = useSelector(store => store.users);
+    const booklist = useSelector(store => store.books);
 
+    console.log("BOOKSSSS ARRRAYYYY ----- MERP", booklist.books);
+    console.log("BOOKSSSS ARRRAYYYY ----- TYPE OF", typeof booklist.books);
     const initialState = {
         search_query: "",
         errors: []
@@ -24,8 +27,7 @@ function Search() {
 
     async function handleSubmit(evt) {
         evt.preventDefault();
-
-        // dispatch(registerUser(formData));
+        dispatch(getBooks(formData));
     }
 
     return (
@@ -47,6 +49,26 @@ function Search() {
                     className=""
                 />
             </form>
+            <div className="Search-result-container">
+                {booklist && booklist.books.length !== 0
+                    ? (<div>
+                        <p>Search Result</p>
+                        {booklist.books.map(book => <BookCard
+                            // bookImage={book.bookImage}
+                            // title={book.title}
+                            // authors={book.authors}
+                            // description={book.description}
+                            // averageRating={book.averageRating}
+                            // publishedDate={book.publishedDate}
+                            // publisher={book.publisher}
+                            // pageCount={book.pageCount}
+                            // isbn={book.isbn}
+                            book={book}
+                        />)}
+                    </div>) :
+                    <p>There are no result for: {formData.search_query}</p>
+                }
+            </div>
         </div>
     );
 }

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { REGISTER_USER, LOGGED_IN, LOGGED_OUT, GET_PROFILE } from "./actionTypes";
-import { TOKEN_LOCALSTORAGE } from "../components/App.js";
-import useLocalStorage from "../hooks/useLocalStorage";
+// import { TOKEN_LOCALSTORAGE } from "../components/App.js";
+// import useLocalStorage from "../hooks/useLocalStorage";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
 

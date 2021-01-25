@@ -1,8 +1,8 @@
 // import logo from './logo.svg';
 import React, { useState, useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
-import { decode } from "jsonwebtoken";
-import useLocalStorage from "../hooks/useLocalStorage";
+// import { decode } from "jsonwebtoken";
+// import useLocalStorage from "../hooks/useLocalStorage";
 import NavBar from "./NavBar";
 import Routes from "./Routes";
 import Footer from "./Footer";

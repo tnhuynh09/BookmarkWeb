@@ -7,14 +7,14 @@ import './Register.css';
 function Register({ setToken }) {
     const history = useHistory();
     const dispatch = useDispatch();
-    const users = useSelector(store => store.users);
+    // const users = useSelector(store => store.users);
     const initialState = {
         first_name: "",
         last_name: "",
         username: "",
         email: "",
         password: "",
-        profile_image: "",
+        // profile_image: "",
         errors: []
     }
     const [formData, setFormData] = useState(initialState)
@@ -170,7 +170,7 @@ function Register({ setToken }) {
                             value={formData.password}
                             onChange={handleChange}
                         />
-                        <input
+                        {/* <input
                             id="profile_image"
                             type="text"
                             name="profile_image"
@@ -178,7 +178,7 @@ function Register({ setToken }) {
                             placeholder="Profile Image"
                             value={formData.profile_image}
                             onChange={handleChange}
-                        />
+                        /> */}
                         <input
                             type="submit"
                             value="Submit"
