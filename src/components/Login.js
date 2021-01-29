@@ -1,15 +1,18 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../actions/userActions';
+import React, { useState, useContext } from "react";
+// import { useDispatch, useSelector } from 'react-redux';
+// import { login } from '../actions/userActions';
 import { useHistory } from "react-router-dom";
+import BookmarkApi from "./BookmarkApi";
 import './Login.css';
+import UserContext from "../UserContext";
 
 function Login() {
     const history = useHistory();
-    const dispatch = useDispatch();
-    const users = useSelector(store => store.users);
-    console.log("LOGIN - users", users);
-    console.log("LOGIN - username", users.username);
+    // const dispatch = useDispatch();
+    // const users = useSelector(store => store.users);
+    // console.log("LOGIN - users", users);
+    // console.log("LOGIN - username", users.username);
+    const { setCurrentUserName } = useContext(UserContext);
 
     const initialState = {
         username: "",
@@ -41,8 +44,21 @@ function Login() {
         //     return setFormData(data => ({ ...data, errors }));
         // }
         // setToken(token);
-        dispatch(login(formData));
-        history.push("/");
+        // dispatch(login(formData));
+        // history.push("/");
+
+        let username;
+        try {
+            username = await BookmarkApi.login(formData.username, formData.password);
+        } catch (error) {
+
+        }
+        console.log("Login Page - username", username);
+        // setToken(token);
+        setCurrentUserName(username);
+        if (username) {
+            history.push("/");
+        }
     }
 
     return (

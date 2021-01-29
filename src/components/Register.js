@@ -1,12 +1,15 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState, useContext } from "react";
+// import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from '../actions/userActions';
 import { useHistory } from "react-router-dom";
 import './Register.css';
+import UserContext from "../UserContext";
+import BookmarkApi from "./BookmarkApi";
 
 function Register({ setToken }) {
     const history = useHistory();
-    const dispatch = useDispatch();
+    const { setCurrentUserName } = useContext(UserContext);
+    // const dispatch = useDispatch();
     // const users = useSelector(store => store.users);
     const initialState = {
         first_name: "",
@@ -47,76 +50,16 @@ function Register({ setToken }) {
         // }
         // setToken(token);
 
-        dispatch(registerUser(formData));
-        history.push("/");
+        // dispatch(registerUser(formData));
+        const username = await BookmarkApi.register(formData.username, formData.first_name, formData.last_name, formData.email, formData.password, "");
+
+        setCurrentUserName(username);
+        if (username) {
+            history.push("/");
+        }
     }
 
     return (
-        // <div>
-        //     <h1>Register</h1>
-        //     <form onSubmit={handleSubmit}>
-        //         <label htmlFor="first_name">First Name</label>
-        //         <input
-        //             id="first_name"
-        //             type="text"
-        //             name="first_name"
-        //             value={formData.first_name}
-        //             onChange={handleChange}
-        //         />
-
-        //         <label htmlFor="last_name">Last Name</label>
-        //         <input
-        //             id="last_name"
-        //             type="text"
-        //             name="last_name"
-        //             value={formData.last_name}
-        //             onChange={handleChange}
-        //         />
-
-        //         <label htmlFor="username">Username</label>
-        //         <input
-        //             id="username"
-        //             type="text"
-        //             name="username"
-        //             value={formData.username}
-        //             onChange={handleChange}
-        //         />
-
-        //         <label htmlFor="email">Email</label>
-        //         <input
-        //             id="email"
-        //             type="email"
-        //             name="email"
-        //             value={formData.email}
-        //             onChange={handleChange}
-        //         />
-
-        //         <label htmlFor="password">Password</label>
-        //         <input
-        //             id="password"
-        //             type="password"
-        //             name="password"
-        //             value={formData.password}
-        //             onChange={handleChange}
-        //         />
-
-        //         <label htmlFor="profile_image">Upload Image</label>
-        //         <input
-        //             id="profile_image"
-        //             type="text"
-        //             name="profile_image"
-        //             value={formData.profile_image}
-        //             onChange={handleChange}
-        //         />
-
-        //         <button type="submit">Submit</button>
-        //     </form>
-
-        //     <div>
-        //         <p>Already have an account? Login Here</p>
-        //     </div>
-        // </div>
-
         <div className="Register-container-main">
             <div className="Register-container">
                 <div className="Register-leftSide">
@@ -170,15 +113,6 @@ function Register({ setToken }) {
                             value={formData.password}
                             onChange={handleChange}
                         />
-                        {/* <input
-                            id="profile_image"
-                            type="text"
-                            name="profile_image"
-                            className="Register-rightSide-form-input"
-                            placeholder="Profile Image"
-                            value={formData.profile_image}
-                            onChange={handleChange}
-                        /> */}
                         <input
                             type="submit"
                             value="Submit"

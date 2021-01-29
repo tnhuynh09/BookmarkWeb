@@ -1,0 +1,108 @@
+div.JournalForm-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 3rem;
+    align-items: center;
+}
+
+h2.JournalForm-header {
+    font-size: 2em;
+    margin-bottom: 2rem;
+}
+
+div.JournalForm-makePublic {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 90%;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+label.JournalForm-makePublicTitle {
+    margin-right: 1rem;
+    font-weight: 700;
+}
+
+input.JournalForm-makePublicCheckbox {
+    margin-bottom: 0.4rem;
+}
+
+div.JournalForm-dateWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 1rem;
+    width: 90%;
+}
+
+label.JournalForm-dateTitle {
+    font-weight: 700;
+    width: 7rem;
+}
+
+input.JournalForm-dateInput {
+    margin-left: 1rem;
+}
+
+div.JournalForm-readingStatusWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 1rem;
+    width: 90%;
+}
+
+label.JournalForm-readingStatusTitle {
+    font-weight: 700;
+}
+
+select.JournalForm-readingStatusSelect {
+    margin-left: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+div.JournalForm-ratingWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 1rem;
+    width: 90%;
+}
+
+label.JournalForm-ratingTitle {
+    font-weight: 700;
+}
+
+select.JournalForm-ratingSelect {
+    margin-left: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+textarea.JournalForm-textarea {
+    margin-bottom: 1rem;
+    width: 90%;
+    min-height: 10rem;
+    padding: 1rem;
+    font-weight: 500;
+}
+
+div.JournalForm-extender {
+    flex-grow: 1;
+    background-color: lightgray;
+    height: 1px;
+    widows: 10rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+input.JournalForm-button {
+    background-color: orange;
+    color: #292b2c;
+    padding: 1rem;
+    border: none;
+    width: 90%;
+    font-weight: 700;
+}

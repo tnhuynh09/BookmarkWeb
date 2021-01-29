@@ -1,0 +1,32 @@
+.Bookshelf-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+div.Bookshelf-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+h2.Bookshelf-headerTitle {
+    flex-grow: 1;
+}
+
+button.Bookshelf-addBook {
+    background-color: orange;
+    color: #292b2c;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border: none;
+}
+
+div.Bookshelf-books-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

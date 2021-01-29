@@ -1,16 +1,18 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from 'react-redux';
-import { getBooks } from '../actions/bookActions';
+// import { useDispatch, useSelector } from 'react-redux';
+import { getSearchedBooks } from '../actions/bookActions';
 // import { useHistory } from "react-router-dom";
 import BookCard from './BookCard'
-// import './Search.css';
+import BookmarkApi from "./BookmarkApi";
+import './Search.css';
 
 function Search() {
-    const dispatch = useDispatch();
-    const booklist = useSelector(store => store.books);
+    // const dispatch = useDispatch();
+    // const booklist = useSelector(store => store.books);
 
-    console.log("BOOKSSSS ARRRAYYYY ----- MERP", booklist.books);
-    console.log("BOOKSSSS ARRRAYYYY ----- TYPE OF", typeof booklist.books);
+    // console.log("SEARCH COMP - booklist", booklist);
+    const [booklist, setBooklist] = useState([]);
+
     const initialState = {
         search_query: "",
         errors: []
@@ -27,18 +29,23 @@ function Search() {
 
     async function handleSubmit(evt) {
         evt.preventDefault();
-        dispatch(getBooks(formData));
+        // dispatch(getSearchedBooks(formData));
+
+        console.log("Search - handleSubmit");
+        const result = await BookmarkApi.getSearchedBooks(formData.search_query);
+        console.log("Search - handleSubmit - result", result);
+        setBooklist(result);
     }
 
     return (
-        <div className="Search">
-            <h2>Search</h2>
-            <form onSubmit={handleSubmit}>
+        <div className="Search-wrapper">
+            {/* <h2>Search</h2> */}
+            <form className="Search-searchBar" onSubmit={handleSubmit}>
                 <input
                     id="search_query"
                     type="text"
                     name="search_query"
-                    className=""
+                    className="Search-input"
                     placeholder="Search for book..."
                     value={formData.search_query}
                     onChange={handleChange}
@@ -46,14 +53,14 @@ function Search() {
                 <input
                     type="submit"
                     value="Submit"
-                    className=""
+                    className="Search-button"
                 />
             </form>
-            <div className="Search-result-container">
-                {booklist && booklist.books.length !== 0
-                    ? (<div>
-                        <p>Search Result</p>
-                        {booklist.books.map(book => <BookCard
+            <div>
+                {booklist && booklist.length > 0
+                    ? (<div className="Search-result-container">
+                        <p className="Search-result-header">Search Result: {booklist.length}</p>
+                        {booklist.map(book => <BookCard
                             // bookImage={book.bookImage}
                             // title={book.title}
                             // authors={book.authors}
@@ -66,7 +73,7 @@ function Search() {
                             book={book}
                         />)}
                     </div>) :
-                    <p>There are no result for: {formData.search_query}</p>
+                    <p className="Search-result-no-results">There is currently no results.</p>
                 }
             </div>
         </div>

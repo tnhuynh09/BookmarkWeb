@@ -1,5 +1,13 @@
 .Routes {
-  min-height: 20rem;
+    min-height: 20rem;
+}
+
+button {
+    border-radius: 0.5rem;
+}
+
+input[type=submit] {
+    border-radius: 0.5rem;
 }
 
 /* .App {

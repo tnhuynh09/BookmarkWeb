@@ -1,0 +1,44 @@
+div.Search-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+form.Search-searchBar {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 2rem;
+}
+
+input.Search-input {
+    flex-grow: 1;
+    margin-right: 2rem;
+}
+
+input.Search-button {
+    background-color: orange;
+    color: #292b2c;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    border: none;
+}
+
+div.Search-result-container {
+    display: flex;
+    flex-direction: column;
+}
+
+p.Search-result-header {
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+p.Search-result-no-results {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    color: orange;
+}

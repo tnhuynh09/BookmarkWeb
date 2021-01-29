@@ -1,0 +1,86 @@
+div.BookshelfCard-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    background-color: #F9F9F9;
+}
+
+div.BookshelfCard-top {
+    display: flex;
+    flex-direction: row;
+}
+
+img.BookshelfCard-image {
+    width: 10rem;
+    height: auto;
+    object-fit: contain;
+    margin-right: 2rem;
+    border-style: solid;
+    border-color: grey;
+}
+
+div.BookshelfCard-top-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-items: flex-start;
+}
+p {
+    margin: 0;
+}
+
+p.BookshelfCard-title {
+    font-weight: 900;
+    margin: 0;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+p.BookshelfCard-authors {
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+p.BookshelfCard-description {
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+div.BookshelfCard-buttons {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0rem;
+}
+
+button.BookshelfCard-delete-button {
+    font-weight: 700;
+    color: #FFFFFF;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    margin-right: 1rem;
+    background-color: red;
+    border: none;
+}
+
+button.BookshelfCard-add-button {
+    font-weight: 700;
+    color: #FFFFFF;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    background-color: green;
+    border: none;
+}
+
+div.BookshelfCard-divider {
+    width: 80%;
+    height: 2px;
+    align-self: center;
+    background-color: lightgray;
+    margin-bottom: 2rem;
+}

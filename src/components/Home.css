@@ -1,0 +1,70 @@
+div.Home-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+div.Home-newsfeedCard {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    border-radius: 1rem;
+    background-color: orange;
+    width: 50%;
+    padding: 1rem;
+}
+
+@media screen and (max-width: 1000px) {
+    div.Home-newsfeedCard {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    div.Home-newsfeedCard {
+        width: 90%;
+    }
+}
+
+div.Home-newsfeedCardTop {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1rem;
+}
+
+img.Home-newsfeedCardImage {
+    width: 10rem;
+    height: auto;
+    object-fit: contain;
+    margin-right: 2rem;
+    border-style: solid;
+    border-color: grey;
+}
+
+div.Home-newsfeedCardTopRight {
+    display: flex;
+    flex-direction: column;
+}
+
+label.Home-newsfeedCardTopRightTitle {
+    font-weight: 500;
+}
+
+label.Home-newsfeedCardTopRightAuthors {
+    font-weight: 500;
+}
+
+label.Home-newsfeedCardTopRightReader {
+    font-weight: 500;
+}
+
+label.Home-newsfeedCardTopRightRating {
+    font-weight: 500;
+}
+
+label {
+    margin: 0;
+}

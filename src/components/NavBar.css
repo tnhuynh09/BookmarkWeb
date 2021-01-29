@@ -1,0 +1,15 @@
+.NavBar-wrapper {
+    background-color: #292b2c;
+    color: orange;
+}
+
+/* .NavBar-link {
+    color: orange;
+    text-align: center;
+    justify-self: center;
+    align-self: center;
+} */
+
+.NavBar-item {
+    color: orange;
+}

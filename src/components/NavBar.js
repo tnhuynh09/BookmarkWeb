@@ -1,23 +1,37 @@
-import React from "react";
+import React, { useEffect, useContext } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+// import { useSelector, useDispatch } from 'react-redux';
 import { loggedOut } from '../actions/userActions';
+import { TOKEN_LOCALSTORAGE, USER_NAME } from "./App.js"
 import './NavBar.css';
+import UserContext from "../UserContext";
 
 function Navbar() {
     const history = useHistory();
-    const dispatch = useDispatch();
-    const user = useSelector(store => store.users);
-    console.log("NAVBAR - user", user);
-    console.log("NAVBAR - username", user.username);
+    // const dispatch = useDispatch();
+    // const user = useSelector(store => store.users);
+    // console.log("NAVBAR - user", user);
+    // console.log("NAVBAR - username", user.username);
+    const { currentUserName, setCurrentUserName } = useContext(UserContext);
+    // let userName = localStorage.getItem(USER_NAME);
+
+    useEffect(function () {
+        const userName = localStorage.getItem(USER_NAME);
+        setCurrentUserName(userName);
+    });
 
     const logout = () => {
-        dispatch(loggedOut());
+        // dispatch(loggedOut());
+        localStorage.clear();
+        setCurrentUserName(null);
+        // userName = localStorage.getItem(USER_NAME);
         history.push('/');
     }
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        // navbar-light 
+        // <nav className="navbar navbar-expand-lg navbar-dark NavBar-wrapper">
+        <nav className="navbar navbar-expand-lg navbar-dark NavBar-wrapper">
             <NavLink className="navbar-brand" exact to="/">BOOKMARK LOGO</NavLink>
             <button className="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarSupportedContent"
@@ -27,27 +41,27 @@ function Navbar() {
             </button>
 
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                {!user.username ?
+                {!currentUserName ?
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item">
-                            <NavLink className="nav-link" to="/login">LOGIN</NavLink>
+                            <NavLink className="nav-link NavBar-item" to="/login">LOGIN</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link" to="/register">REGISTER</NavLink>
+                            <NavLink className="nav-link NavBar-item" to="/register">REGISTER</NavLink>
                         </li>
                     </ul>
 
                     :
 
                     <ul className="navbar-nav ml-auto">
-                        <li className="nav-item">
-                            <NavLink className="nav-link" to="/profile">HI {user.username}</NavLink>
+                        <li className="nav-item ">
+                            <NavLink className="nav-link NavBar-item" to="/profile">HI {currentUserName}</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link" to="/bookshelf">BOOKSHELF</NavLink>
+                            <NavLink className="nav-link NavBar-item" to="/bookshelf">BOOKSHELF</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link" to="/" onClick={logout}>LOG OUT</NavLink>
+                            <NavLink className="nav-link NavBar-item" to="/" onClick={logout}>LOG OUT</NavLink>
                         </li>
                     </ul>
                 }
