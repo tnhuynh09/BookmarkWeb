@@ -52,14 +52,14 @@ function Search() {
                 />
                 <input
                     type="submit"
-                    value="Submit"
+                    value="SUBMIT"
                     className="Search-button"
                 />
             </form>
             <div>
                 {booklist && booklist.length > 0
                     ? (<div className="Search-result-container">
-                        <p className="Search-result-header">Search Result: {booklist.length}</p>
+                        <p className="Search-result-header">SEARCH RESULT</p>
                         {booklist.map(book => <BookCard
                             // bookImage={book.bookImage}
                             // title={book.title}

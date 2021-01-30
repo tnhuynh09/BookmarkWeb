@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import BookmarkApi from "./BookmarkApi";
 import './Login.css';
 import UserContext from "../UserContext";
+import backgroundImage from '../images/login_image.jpeg';
 
 function Login() {
     const history = useHistory();
@@ -95,10 +96,11 @@ function Login() {
         <div className="Login-container-main">
             <div className="Login-container">
                 <div className="Login-leftSide">
-                    <h4 className="Login-leftSide-name">BOOKmarkMyWord</h4>
+                    {/* <h4 className="Login-leftSide-name">BOOKmarkMyWord</h4> */}
+                    <img className="Login-image" src={backgroundImage} />
                 </div>
                 <div className="Login-rightSide">
-                    <h2 className="Login-rightSide-header">Log In</h2>
+                    <h2 className="Login-rightSide-header">LOG IN</h2>
                     <form onSubmit={handleSubmit} className="Login-rightSide-form">
                         <input
                             type="text"
@@ -124,7 +126,7 @@ function Login() {
                             className="Login-rightSide-button"
                         />
                     </form>
-                    <p>Don't have an account? <a href="/register">Register Here</a></p>
+                    <p class="Login-register">Don't have an account? <a href="/register">Register Here</a></p>
                 </div>
             </div>
         </div>

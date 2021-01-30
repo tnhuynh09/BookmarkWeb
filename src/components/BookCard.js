@@ -62,7 +62,7 @@ function BookCard({ book }) {
                             className="BookshelfCard-add-button"
                             onClick={addBook}
                         >
-                            Add to Booksehf
+                            ADD TO BOOKSHELF
                         </button>
                     </div>
 

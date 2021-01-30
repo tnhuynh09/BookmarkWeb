@@ -35,12 +35,11 @@ p.BookshelfCard-title {
     font-weight: 900;
     margin: 0;
     margin-top: 1rem;
-    margin-bottom: 1rem;
 }
 
 p.BookshelfCard-authors {
     font-weight: 600;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 p.BookshelfCard-description {
@@ -55,26 +54,32 @@ div.BookshelfCard-buttons {
 }
 
 button.BookshelfCard-delete-button {
-    font-weight: 700;
+    font-weight: 500;
+    font-size: 0.8em;
     color: #FFFFFF;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     margin-right: 1rem;
-    background-color: red;
+    background-color: #5E616B;
     border: none;
+    cursor: pointer;
+    letter-spacing: 0.1em;
 }
 
 button.BookshelfCard-add-button {
-    font-weight: 700;
+    font-weight: 500;
+    font-size: 0.8em;
     color: #FFFFFF;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
-    background-color: green;
+    background-color: #E5BABF;
     border: none;
+    cursor: pointer;
+    letter-spacing: 0.1em;
 }
 
 div.BookshelfCard-divider {

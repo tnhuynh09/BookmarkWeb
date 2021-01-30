@@ -5,6 +5,8 @@ import { loggedOut } from '../actions/userActions';
 import { TOKEN_LOCALSTORAGE, USER_NAME } from "./App.js"
 import './NavBar.css';
 import UserContext from "../UserContext";
+// import bookMarkImage from "../images/book";
+import bookMarkImage from '../images/book_mark_logo.png';
 
 function Navbar() {
     const history = useHistory();
@@ -32,7 +34,9 @@ function Navbar() {
         // navbar-light 
         // <nav className="navbar navbar-expand-lg navbar-dark NavBar-wrapper">
         <nav className="navbar navbar-expand-lg navbar-dark NavBar-wrapper">
-            <NavLink className="navbar-brand" exact to="/">BOOKMARK LOGO</NavLink>
+            <NavLink className="navbar-brand" exact to="/">
+                <img className="NavBar-logo" src={bookMarkImage} />
+            </NavLink>
             <button className="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -55,7 +59,7 @@ function Navbar() {
 
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item ">
-                            <NavLink className="nav-link NavBar-item" to="/profile">HI {currentUserName}</NavLink>
+                            <NavLink className="nav-link NavBar-item" to="/profile">HI, {currentUserName}</NavLink>
                         </li>
                         <li className="nav-item">
                             <NavLink className="nav-link NavBar-item" to="/bookshelf">BOOKSHELF</NavLink>

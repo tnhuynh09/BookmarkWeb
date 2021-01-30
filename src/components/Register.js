@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import './Register.css';
 import UserContext from "../UserContext";
 import BookmarkApi from "./BookmarkApi";
+import backgroundImage from '../images/register_image.jpeg';
 
 function Register({ setToken }) {
     const history = useHistory();
@@ -63,10 +64,10 @@ function Register({ setToken }) {
         <div className="Register-container-main">
             <div className="Register-container">
                 <div className="Register-leftSide">
-                    <h4 className="Register-leftSide-name">BOOKmarkMyWord</h4>
+                    <img className="Register-image" src={backgroundImage} />
                 </div>
                 <div className="Register-rightSide">
-                    <h2 className="Register-rightSide-header">Register</h2>
+                    <h2 className="Register-rightSide-header">REGISTER</h2>
                     <form onSubmit={handleSubmit} className="Register-rightSide-form">
                         <input
                             id="first_name"
@@ -119,7 +120,7 @@ function Register({ setToken }) {
                             className="Register-rightSide-button"
                         />
                     </form>
-                    <p>Already have an account? <a href="/login">Login Here</a></p>
+                    <p class="Register-login">Already have an account? <a href="/login">Login Here</a></p>
                 </div>
             </div>
         </div>

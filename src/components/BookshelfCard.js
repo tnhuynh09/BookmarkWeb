@@ -56,14 +56,14 @@ function BookshelfCard({ book, addJournal }) {
                             className="BookshelfCard-delete-button"
                             onClick={handleDeleteBook}
                         >
-                            Delete Book
+                            DELETE BOOK
                         </button>
 
                         <button
                             className="BookshelfCard-add-button"
                             onClick={handleAddJournal}
                         >
-                            Journal
+                            JOURNAL
                         </button>
                     </div>
 

@@ -4,7 +4,22 @@ div.Home-wrapper {
     padding-left: 2rem;
     padding-right: 2rem;
     align-items: center;
-    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    background-color: #CDD3D6;
+}
+
+h2.Home-headerTitle {
+    flex-grow: 1;
+    font-weight: 400;
+    font-size: 1.75em;
+    letter-spacing: 0.1em;
+    margin-left: 1rem;
+    margin-top: 2rem;
+}
+
+p.Home-noFeed {
+    margin-top: 5rem;
+    margin-bottom: 15rem;
 }
 
 div.Home-newsfeedCard {
@@ -12,7 +27,7 @@ div.Home-newsfeedCard {
     flex-direction: column;
     margin-top: 2rem;
     border-radius: 1rem;
-    background-color: orange;
+    background-color: #F9F9F9;
     width: 50%;
     padding: 1rem;
 }
@@ -67,4 +82,62 @@ label.Home-newsfeedCardTopRightRating {
 
 label {
     margin: 0;
+}
+
+div.Home-wrapper2 {
+    display: flex;
+    position: relative;
+}
+
+img.Home-wrapper2BackgroundImage {
+    height: 100%;
+    width: 100%;
+    max-height: 50rem;
+    object-fit: cover;
+    z-index: 1;
+}
+
+div.Home-wrapper2Content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+}
+
+h1.Home-wrapper2ContentTitle {
+    color: #FCF1EF;
+    margin-bottom: 2rem;
+    text-align: center;
+    /* text-shadow: 2px 2px #5E616B; */
+    text-shadow: 2px 2px 4px #000000;
+}
+
+h2.Home-wrapper2ContentSubtitle {
+    color: #FCF1EF;
+    margin-bottom: 2rem;
+    text-align: center;
+    /* text-shadow: 2px 2px #5E616B; */
+    text-shadow: 2px 2px 4px #000000;
+}
+
+button.Home-wrapper2ContentButton {
+    letter-spacing: 0.1em;
+    font-size: 0.8rem;
+    border-radius:0.2rem;
+    font-weight: 500;
+    color: #FFFFFF;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    background-color: #E5BABF;
+    border: none;
+    cursor: pointer;
 }

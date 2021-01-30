@@ -85,7 +85,8 @@ form{
 .Login-container-main {
     display: flex;
     flex-direction: column;
-    align-items: center;
+	align-items: center;
+	background-color: #E7D8C9;
 }
 
 .Login-container {
@@ -93,9 +94,6 @@ form{
     display: flex;
     flex-direction: row;
     border-radius: 2rem;
-    border-style: solid;
-    border-width: 1px;
-    border-color: #000000;
     overflow: hidden;
     margin: 5rem;
 }
@@ -103,12 +101,19 @@ form{
 .Login-leftSide {
     display: flex;
     flex-direction: column;
-    background-color: orange;
+    /* background-color: #E5BABF; */
     width: 40%;
 }
 
 .Login-leftSide-name {
     width: 100%;
+}
+
+img.Login-image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+    opacity: 85%;
 }
 
 .Login-rightSide {
@@ -119,7 +124,8 @@ form{
     padding-left: 2rem;
     padding-right: 2rem;
     padding-top: 2rem;
-    padding-bottom: 0.5rem;
+	padding-bottom: 0.5rem;
+	background-color: #FFFFFF;
 }
 
 @media screen and (max-width: 1000px) {
@@ -130,13 +136,13 @@ form{
 
 @media screen and (max-width: 900px) {
 	.Login-container{
-        width: 75%;
+        width: 60%;
     }
 }
 
 @media screen and (max-width: 850px) {
-	.Login-container{
-        width: 90%;
+	.Login-container {
+        width: 60%;
     }
 	.Login-leftSide{
 		display: none;
@@ -147,7 +153,10 @@ form{
 }
 
 .Login-rightSide-header {
-
+    font-weight: 400;
+    font-size: 1.75em;
+    letter-spacing: 0.1em;
+    color: #5e616B;
 }
 
 .Login-rightSide-form {
@@ -169,7 +178,7 @@ form{
 	transition: all .5s ease;
 }
 .Login-rightSide-form-input:focus{
-	border-bottom-color: orange;
+	border-bottom-color: #E5BABF;
 	box-shadow: 0 0 5px rgba(0,80,80,.4); 
 	border-radius: 4px;
 }
@@ -178,18 +187,22 @@ form{
 	transition: all .5s ease;
 	width: 70%;
 	border-radius: 30px;
-	color:orange;
+	color:#5E616B;
 	font-weight: 600;
 	background-color: #fff;
-	border: 1px solid orange;
+	border: 1px solid #5E616B;
 	margin-top: 1.5em;
 	margin-bottom: 1em;
 }
 .Login-rightSide-button:hover, .Login-rightSide-button:focus{
-	background-color: orange;
+	background-color: #E5BABF;
 	color:#fff;
+	border-color: #E5BABF;
 }
 
-p {
-    margin-top: 1.5rem;
+p.Login-register {
+	margin-top: 1.0rem;
+	margin-bottom: 1rem;
+	font-size: 0.8em;
+	text-align: center;
 }

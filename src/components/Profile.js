@@ -3,7 +3,7 @@ import React, { useEffect, useContext, useState } from 'react';
 // import { getUserProfile } from '../actions/userActions';
 import BookmarkApi from './BookmarkApi';
 // import { useHistory } from "react-router-dom";
-// import './Profile.css';
+import './Profile.css';
 
 function Profile() {
     console.log("PROFILE - COMP");
@@ -25,11 +25,13 @@ function Profile() {
     return (
         (user) ?
             <div className="Profile">
-                <h2>Profile</h2>
-                <p>PROFILE IMAGE</p>
-                <img src={user.image_url} alt="Girl in a jacket" width="100" height="100"></img>
-                <p>{user.username}</p>
-                <p>{user.first_name} {user.last_name}</p>
+                <div className="Profile-wrapper">
+                    <h2 className="Profile-header">PROFILE</h2>
+                    {/* <p>PROFILE IMAGE</p> */}
+                    <img className="Profile-profileImage" src={user.image_url} alt="Girl in a jacket" width="100" height="100"></img>
+                    <p className="Profile-profileInfo">{user.username}</p>
+                    <p className="Profile-profileInfo">{user.first_name} {user.last_name}</p>
+                </div>
             </div>
             :
             <div></div>

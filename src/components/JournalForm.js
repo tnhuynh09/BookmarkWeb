@@ -98,7 +98,7 @@ function JournalForm({ setToken }) {
 
     return (
         <div className="JournalForm-wrapper">
-            <h2 className="JournalForm-header">My Journal</h2>
+            <h2 className="JournalForm-header">MY JOURNAL</h2>
             <form onSubmit={handleSubmit} className="Register-rightSide-form">
                 {formData.is_public == true ?
                     <div className="JournalForm-makePublic">
@@ -216,7 +216,7 @@ function JournalForm({ setToken }) {
                 />
                 <input
                     type="submit"
-                    value="Submit"
+                    value="SUBMIT"
                     className="JournalForm-button"
                 />
             </form>

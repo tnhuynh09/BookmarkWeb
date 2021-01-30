@@ -6,8 +6,10 @@ div.JournalForm-wrapper {
 }
 
 h2.JournalForm-header {
-    font-size: 2em;
     margin-bottom: 2rem;
+    font-weight: 400;
+    font-size: 2em;
+    letter-spacing: 0.1em;
 }
 
 div.JournalForm-makePublic {
@@ -21,7 +23,8 @@ div.JournalForm-makePublic {
 
 label.JournalForm-makePublicTitle {
     margin-right: 1rem;
-    font-weight: 700;
+    font-weight: 600;
+    letter-spacing: 0.1em;
 }
 
 input.JournalForm-makePublicCheckbox {
@@ -37,8 +40,8 @@ div.JournalForm-dateWrapper {
 }
 
 label.JournalForm-dateTitle {
-    font-weight: 700;
-    width: 7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
 }
 
 input.JournalForm-dateInput {
@@ -54,7 +57,8 @@ div.JournalForm-readingStatusWrapper {
 }
 
 label.JournalForm-readingStatusTitle {
-    font-weight: 700;
+    font-weight: 600;
+    letter-spacing: 0.1em;
 }
 
 select.JournalForm-readingStatusSelect {
@@ -72,7 +76,8 @@ div.JournalForm-ratingWrapper {
 }
 
 label.JournalForm-ratingTitle {
-    font-weight: 700;
+    font-weight: 600;
+    letter-spacing: 0.1em;
 }
 
 select.JournalForm-ratingSelect {
@@ -99,10 +104,17 @@ div.JournalForm-extender {
 }
 
 input.JournalForm-button {
-    background-color: orange;
-    color: #292b2c;
-    padding: 1rem;
+    letter-spacing: 0.1em;
+    font-size: 0.8rem;
+    border-radius:0.2rem;
+    font-weight: 500;
+    color: #FFFFFF;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    background-color: #E5BABF;
     border: none;
+    cursor: pointer;
     width: 90%;
-    font-weight: 700;
 }

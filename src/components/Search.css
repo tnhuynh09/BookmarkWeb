@@ -15,14 +15,23 @@ form.Search-searchBar {
 input.Search-input {
     flex-grow: 1;
     margin-right: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 input.Search-button {
-    background-color: orange;
-    color: #292b2c;
+    letter-spacing: 0.1em;
+    font-size: 0.8rem;
+    border-radius:0.2rem;
+    font-weight: 500;
+    color: #FFFFFF;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+    background-color: #E5BABF;
     border: none;
+    cursor: pointer;
 }
 
 div.Search-result-container {
@@ -31,14 +40,19 @@ div.Search-result-container {
 }
 
 p.Search-result-header {
-    margin-top: 0.5rem;
-    margin-bottom: 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0rem;
+    margin-left: 0.5rem;
     font-weight: 700;
+    color: #5E616B;
+    font-weight: 400;
+    font-size: 1.75em;
+    letter-spacing: 0.1em;
 }
 
 p.Search-result-no-results {
     margin-top: 1rem;
     margin-bottom: 1rem;
     font-weight: 700;
-    color: orange;
+    color: #5E616B;
 }

@@ -3,13 +3,12 @@
     color: orange;
 }
 
-/* .NavBar-link {
-    color: orange;
-    text-align: center;
-    justify-self: center;
-    align-self: center;
-} */
+img.NavBar-logo {
+    width: 10rem;
+    object-fit: contain;
+}
 
 .NavBar-item {
-    color: orange;
+    /* color: orange; */
+    text-transform: uppercase;
 }

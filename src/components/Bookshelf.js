@@ -46,11 +46,12 @@ function Bookshelf() {
     return (
         <div className="Bookshelf-wrapper">
             <div className="Bookshelf-header">
-                <h2 className="Bookshelf-headerTitle">My Bookshelf</h2>
+                <h2 className="Bookshelf-headerTitle">MY BOOKSHELF</h2>
                 <Link to="/search">
                     <button className="Bookshelf-addBook">+ ADD BOOK</button>
                 </Link>
             </div>
+            <div className="Bookshelf-divider"></div>
             {/* <button onClick={test}>Test</button> */}
             <div className="Bookshelf-books-list">
                 {userBooks
