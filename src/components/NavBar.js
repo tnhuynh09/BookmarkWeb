@@ -7,6 +7,9 @@ import './NavBar.css';
 import UserContext from "../UserContext";
 // import bookMarkImage from "../images/book";
 import bookMarkImage from '../images/book_mark_logo.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserCircle, faSignOutAlt, faSignInAlt, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { faBookmark as farBookmark } from '@fortawesome/free-regular-svg-icons';
 
 function Navbar() {
     const history = useHistory();
@@ -48,10 +51,14 @@ function Navbar() {
                 {!currentUserName ?
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item">
-                            <NavLink className="nav-link NavBar-item" to="/login">LOGIN</NavLink>
+                            <NavLink className="nav-link NavBar-item" to="/login">
+                                <FontAwesomeIcon icon={faSignInAlt} /> LOGIN
+                            </NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link NavBar-item" to="/register">REGISTER</NavLink>
+                            <NavLink className="nav-link NavBar-item" to="/register">
+                                <FontAwesomeIcon icon={faUserPlus} /> REGISTER
+                            </NavLink>
                         </li>
                     </ul>
 
@@ -59,13 +66,19 @@ function Navbar() {
 
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item ">
-                            <NavLink className="nav-link NavBar-item" to="/profile">HI, {currentUserName}</NavLink>
+                            <NavLink className="nav-link NavBar-item" to="/profile">
+                                <FontAwesomeIcon icon={faUserCircle} /> HI, {currentUserName}
+                            </NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link NavBar-item" to="/bookshelf">BOOKSHELF</NavLink>
+                            <NavLink className="nav-link NavBar-item" to="/bookshelf">
+                                <FontAwesomeIcon icon={farBookmark} /> BOOKSHELF
+                            </NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link NavBar-item" to="/" onClick={logout}>LOG OUT</NavLink>
+                            <NavLink className="nav-link NavBar-item" to="/" onClick={logout}>
+                                <FontAwesomeIcon icon={faSignOutAlt} /> LOG OUT
+                            </NavLink>
                         </li>
                     </ul>
                 }

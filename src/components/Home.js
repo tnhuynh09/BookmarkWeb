@@ -1,10 +1,11 @@
-import React, { useEffect, useContext, useState } from 'react';
-// import { Link } from "react-router-dom";
-// import { useSelector } from "react-redux";
+import React, { useEffect, useState } from 'react';
 import BookmarkApi from './BookmarkApi';
-import './Home.css';
-import { TOKEN_LOCALSTORAGE } from "./App.js"
+import { TOKEN_LOCALSTORAGE } from "./App.js";
 import backgroundImage from '../images/home_page_background_2.jpeg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCoffee, faHeart as fasHeart } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
+import './Home.css';
 
 function Home() {
     const [journals, setJournals] = useState([]);
@@ -27,7 +28,6 @@ function Home() {
 
     useEffect(async function () {
         getNewsfeed();
-
     }, []);
 
     async function getNewsfeed() {
@@ -35,17 +35,36 @@ function Home() {
         setJournals(result);
     }
 
+    async function handleLikes(journal) {
+        const resData = await BookmarkApi.likesToggleNewsFeedItem(journal);
+        if (resData.success && resData.actionType == "add-likes") {
+            journal.likesCount++;
+            journal.isLiked = true;
+        } else if (resData.success && resData.actionType == "remove-likes") {
+            journal.likesCount--;
+            journal.isLiked = false;
+        }
+
+        for (let i = 0; i < journals.length; i++) {
+            if (journals[i].id === journal.id) {
+                journals[i] = journal;
+            }
+        }
+        let newArr = [...journals];
+        setJournals(newArr);
+    }
+
     return (
         (jwtToken) ?
             <div>
                 {journals && journals.length > 0
                     ? (<div className="Home-wrapper">
-                        <h2 className="Home-headerTitle">MY NEWSFEED</h2>
+                        <h2 className="Home-headerTitle">MY NEWSFEED  <FontAwesomeIcon icon={faCoffee} /></h2>
+                        <p>See what everyone is up to.</p>
                         {journals.map(journal =>
                             <div className="Home-newsfeedCard">
                                 <div className="Home-newsfeedCardTop">
                                     <img className="Home-newsfeedCardImage" src={journal.book_image} alt="" />
-
                                     <div className="Home-newsfeedCardTopRight">
                                         <label className="Home-newsfeedCardTopRightTitle"><strong>Title: </strong>{journal.title}</label>
                                         <label className="Home-newsfeedCardTopRightAuthors"><strong>Authors: </strong>{journal.authors}</label>
@@ -53,17 +72,26 @@ function Home() {
                                         <label className="Home-newsfeedCardTopRightRating"><strong>Reader's Rating: </strong>{journal.my_rating} / 5</label>
                                     </div>
                                 </div>
-                                {/* <label><strong>Date Started: </strong>{journal.date_started}</label>
-                            <label><strong>Date Finished: </strong>{journal.date_finished}</label> */}
                                 <label><strong>Review: </strong>{journal.book_review}</label>
                                 <label><strong>Favorite Quote: </strong>{journal.favorite_quote}</label>
                                 <label><strong>Final Thought: </strong>{journal.final_thought}</label>
+
+                                <div className="Home-likesContainer">
+                                    <label className="Home-likesAmount">{journal.likesCount} likes</label>
+                                    {journal.isLiked ?
+                                        <button className="Home-likesButton" onClick={() => handleLikes(journal)}>
+                                            <FontAwesomeIcon icon={fasHeart} />
+                                        </button> :
+                                        <button className="Home-likesButton" onClick={() => handleLikes(journal)}>
+                                            <FontAwesomeIcon icon={farHeart} />
+                                        </button>
+                                    }
+                                </div>
                             </div>
                         )}
                     </div>) :
                     (<div className="Home-wrapper">
                         <h2 className="Home-headerTitle">MY NEWSFEED</h2>
-
                         <p className="Home-noFeed">There is no newsfeed at the moment</p>
                     </div>)
                 }
@@ -73,7 +101,6 @@ function Home() {
                 <img className="Home-wrapper2BackgroundImage" src={backgroundImage} />
                 <div className="Home-wrapper2Content">
                     <h1 className="Home-wrapper2ContentTitle">BOOKmark my words</h1>
-                    {/* <h3 className="Home-wrapper2ContentSubtitle">This is some profound message that would make everyonw wants to use this website</h3> */}
                     <h2 className="Home-wrapper2ContentSubtitle">{randomQuote}</h2>
                     <a href="/login">
                         <button className="Home-wrapper2ContentButton">

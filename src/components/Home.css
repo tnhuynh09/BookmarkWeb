@@ -84,6 +84,36 @@ label {
     margin: 0;
 }
 
+div.Home-likesContainer {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1rem;
+    background-color: #FCF1EF;
+    margin-bottom: -1rem;
+    margin-left: -1rem;
+    margin-right: -1rem;
+    border-radius: 0rem 0rem 1rem 1rem;
+}
+
+label.Home-likesAmount {
+    flex-grow: 1;
+    border-style: none solid none none;
+    border-width: 1px;
+    text-align: center;
+    border-color: #CDD3D6;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+button.Home-likesButton {
+    flex-grow: 1;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
 div.Home-wrapper2 {
     display: flex;
     position: relative;

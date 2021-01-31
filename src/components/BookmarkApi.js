@@ -66,9 +66,10 @@ class BookmarkApi {
 
             return null;
         } catch (error) {
-            let message = error.response.data.message;
-            console.log("BookmarkApi - request - error", error);
-            throw Array.isArray(message) ? message : [message];
+            // let message = error.response.data.message;
+            // console.log("BookmarkApi - request - error", error);
+            // throw Array.isArray(message) ? message : [message];
+            throw "Nooo";
         }
     }
 
@@ -118,8 +119,18 @@ class BookmarkApi {
         return res.data.result;
     }
 
+    static async likesToggleNewsFeedItem(journal) {
+        const param = {
+            journalId: journal.id
+        }
+        let res = await this.request(`newsfeed/likesToggle`, param, "post");
+        return res.data;
+    }
+
     static async getSearchedBooks(searchParam) {
+        console.log("BookMarkApi - getSearchedBooks - searchParam", searchParam);
         let res = await this.request(`books?searchParam=${searchParam}`, null, "get");
+        console.log("BookMarkApi - getSearchedBooks - res", res.data);
         return res.data.books;
     }
 
