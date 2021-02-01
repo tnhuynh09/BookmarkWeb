@@ -1,21 +1,21 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import BookmarkApi from "./BookmarkApi";
 import './JournalForm.css';
 
 function JournalForm({ setToken }) {
-    const history = useHistory();
     let { bookId } = useParams();
 
     const initialState = {
         is_public: null,
         date_started: "",
         date_finished: "",
-        reading_status: "",
-        my_rating: "",
+        reading_status: "reading",
+        my_rating: "1",
         book_review: "",
         favorite_quote: "",
         final_thought: "",
+        is_saved: false,
         errors: []
     }
     const [formData, setFormData] = useState(initialState);
@@ -31,14 +31,11 @@ function JournalForm({ setToken }) {
         if (name === "is_public") {
             value = evt.target.checked;
         }
-        console.log("TIGER - handleChange", name, value);
 
         setFormData(data => ({
             ...data,
             [name]: value
         }));
-
-
     }
 
     async function getJournal() {
@@ -60,11 +57,12 @@ function JournalForm({ setToken }) {
             is_public: result.is_public,
             date_started: date_started || "",
             date_finished: date_finished || "",
-            reading_status: result.reading_status || "",
-            my_rating: rating || "5",
+            reading_status: result.reading_status || "reading",
+            my_rating: rating || "1",
             book_review: result.book_review || "",
             favorite_quote: result.favorite_quote || "",
             final_thought: result.final_thought || "",
+            is_saved: false,
             errors: []
         });
     }
@@ -87,11 +85,12 @@ function JournalForm({ setToken }) {
             is_public: result.is_public,
             date_started: date_started || "",
             date_finished: date_finished || "",
-            reading_status: result.reading_status || "",
-            my_rating: result.my_rating || null,
+            reading_status: result.reading_status || "reading",
+            my_rating: result.my_rating || "1",
             book_review: result.book_review || "",
             favorite_quote: result.favorite_quote || "",
             final_thought: result.final_thought || "",
+            is_saved: true,
             errors: []
         });
     }
@@ -214,6 +213,9 @@ function JournalForm({ setToken }) {
                     value={formData.final_thought}
                     onChange={handleChange}
                 />
+                {formData.is_saved == true ? (
+                    <p className="JournalForm-save-success">Journal saved</p>
+                ) : null}
                 <input
                     type="submit"
                     value="SUBMIT"

@@ -1,6 +1,5 @@
 .NavBar-wrapper {
     background-color: #292b2c;
-    color: orange;
 }
 
 img.NavBar-logo {
@@ -9,6 +8,5 @@ img.NavBar-logo {
 }
 
 .NavBar-item {
-    /* color: orange; */
     text-transform: uppercase;
 }

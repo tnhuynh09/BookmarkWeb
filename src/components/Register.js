@@ -1,17 +1,15 @@
 import React, { useState, useContext } from "react";
 // import { useDispatch, useSelector } from 'react-redux';
-import { registerUser } from '../actions/userActions';
 import { useHistory } from "react-router-dom";
 import './Register.css';
 import UserContext from "../UserContext";
 import BookmarkApi from "./BookmarkApi";
 import backgroundImage from '../images/register_image.jpeg';
+import Alert from "./Alert";
 
 function Register({ setToken }) {
     const history = useHistory();
     const { setCurrentUserName } = useContext(UserContext);
-    // const dispatch = useDispatch();
-    // const users = useSelector(store => store.users);
     const initialState = {
         first_name: "",
         last_name: "",
@@ -52,13 +50,28 @@ function Register({ setToken }) {
         // setToken(token);
 
         // dispatch(registerUser(formData));
-        const username = await BookmarkApi.register(formData.username, formData.first_name, formData.last_name, formData.email, formData.password, "");
+
+        let username;
+        try {
+            username = await BookmarkApi.register(formData.username, formData.first_name, formData.last_name, formData.email, formData.password, "");
+        } catch (errors) {
+            return setFormData(data => ({ ...data, errors }));
+        }
 
         setCurrentUserName(username);
         if (username) {
             history.push("/");
         }
+
+        // const username = await BookmarkApi.register(formData.username, formData.first_name, formData.last_name, formData.email, formData.password, "");
+
+        // setCurrentUserName(username);
+        // if (username) {
+        //     history.push("/");
+        // }
     }
+
+    console.log("REGISTER - COMP - ERRORS - formData", formData.errors);
 
     return (
         <div className="Register-container-main">
@@ -114,6 +127,11 @@ function Register({ setToken }) {
                             value={formData.password}
                             onChange={handleChange}
                         />
+
+                        {formData.errors.length ? (
+                            <Alert type={"Alert-danger"} messages={formData.errors} />
+                        ) : null}
+
                         <input
                             type="submit"
                             value="Submit"

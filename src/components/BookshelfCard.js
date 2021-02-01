@@ -1,25 +1,14 @@
-import React, { useEffect, useContext } from 'react';
-import { useHistory } from "react-router-dom";
-// import { deleteBook } from '../actions/bookActions';
-// import { addJournal } from '../actions/journalActions';
-import './BookshelfCard.css';
-import UserContext from "../UserContext";
+import React from 'react';
 import BookmarkApi from './BookmarkApi';
+import './BookshelfCard.css';
 
 function BookshelfCard({ book, addJournal }) {
 
     async function handleDeleteBook() {
-        console.log("delete --- BTN ON CLICK!");
-        console.log("deleteBook --- book", book);
-        console.log("deleteBook --- book ID", book.id);
-        // dispatch(deleteBook(book.id));
-        // history.push("/bookshelf");
-
         const result = await BookmarkApi.deleteBook(book.id);
         console.log("deleteBook --- book result", result);
         if (result === true) {
             window.history.go(0); // Reload the page
-            // history.push("/bookshelf");
         }
     }
 

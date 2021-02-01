@@ -19,6 +19,7 @@ img.BookshelfCard-image {
     margin-right: 2rem;
     border-style: solid;
     border-color: grey;
+    border-width: 0.2rem;
 }
 
 div.BookshelfCard-top-right {

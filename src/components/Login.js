@@ -1,18 +1,13 @@
 import React, { useState, useContext } from "react";
-// import { useDispatch, useSelector } from 'react-redux';
-// import { login } from '../actions/userActions';
 import { useHistory } from "react-router-dom";
 import BookmarkApi from "./BookmarkApi";
-import './Login.css';
 import UserContext from "../UserContext";
 import backgroundImage from '../images/login_image.jpeg';
+import Alert from "./Alert";
+import './Login.css';
 
 function Login() {
     const history = useHistory();
-    // const dispatch = useDispatch();
-    // const users = useSelector(store => store.users);
-    // console.log("LOGIN - users", users);
-    // console.log("LOGIN - username", users.username);
     const { setCurrentUserName } = useContext(UserContext);
 
     const initialState = {
@@ -32,30 +27,14 @@ function Login() {
 
     async function handleSubmit(evt) {
         evt.preventDefault();
-        // let data;
-        // let token;
-
-        // try {
-        //     data = {
-        //         username: formData.username,
-        //         password: formData.password
-        //     };
-        //     token = await BookmarkApi.login(data);
-        // } catch (errors) {
-        //     return setFormData(data => ({ ...data, errors }));
-        // }
-        // setToken(token);
-        // dispatch(login(formData));
-        // history.push("/");
-
         let username;
+
         try {
             username = await BookmarkApi.login(formData.username, formData.password);
-        } catch (error) {
-
+        } catch (errors) {
+            return setFormData(data => ({ ...data, errors }));
         }
-        console.log("Login Page - username", username);
-        // setToken(token);
+
         setCurrentUserName(username);
         if (username) {
             history.push("/");
@@ -63,36 +42,6 @@ function Login() {
     }
 
     return (
-        // <div>
-        //     <h1>Log In</h1>
-        //     <form onSubmit={handleSubmit}>
-        //         <label htmlFor="username">Username</label>
-        //         <input
-        //             id="username"
-        //             type="text"
-        //             name="username"
-        //             value={formData.username}
-        //             onChange={handleChange}
-        //         />
-
-        //         <label htmlFor="password">Password</label>
-        //         <input
-        //             id="password"
-        //             type="password"
-        //             name="password"
-        //             value={formData.password}
-        //             onChange={handleChange}
-        //         />
-
-        //         <button type="submit">Submit</button>
-        //     </form>
-
-        //     <div>
-        //         <p>Don't have an account? Register Here</p>
-        //     </div>
-
-        // </div>
-
         <div className="Login-container-main">
             <div className="Login-container">
                 <div className="Login-leftSide">
@@ -120,6 +69,11 @@ function Login() {
                             value={formData.password}
                             onChange={handleChange}
                         />
+
+                        {formData.errors.length ? (
+                            <Alert type={"Alert-danger"} messages={formData.errors} />
+                        ) : null}
+
                         <input
                             type="submit"
                             value="Submit"

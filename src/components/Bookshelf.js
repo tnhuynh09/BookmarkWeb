@@ -1,29 +1,13 @@
-import React, { useEffect, useContext, useState } from 'react';
-import { useHistory } from "react-router-dom";
-// import { useDispatch, useSelector } from 'react-redux';
-import { getBooks } from '../actions/bookActions';
+import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
-import BookshelfCard from './BookshelfCard'
-import './Bookshelf.css';
-import UserContext from "../UserContext";
+import BookshelfCard from './BookshelfCard';
 import BookmarkApi from './BookmarkApi';
+import './Bookshelf.css';
 
 function Bookshelf() {
-    // const dispatch = useDispatch();
-
-    // const users_books = useSelector(store => store.books.users_books);
-    // console.log("BOOKSHELF - COMP - users_books", users_books);
     const [userBooks, setUserBooks] = useState([]);
-    // const { journalBookId, setJournalBookId } = useContext(UserContext);
 
     useEffect(async function () {
-        // console.log("TIGER ---- useEffect 1 getBooks", users_books);
-        // if (!users_books) {
-        //     // dispatch(getBooks());
-        //     // console.log("TIGER - useEffect 2 getBooks", users_books);
-        // }
-        // dispatch(getBooks());
-        // test();
         getBooks();
 
     }, []);

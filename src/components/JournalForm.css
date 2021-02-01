@@ -118,3 +118,12 @@ input.JournalForm-button {
     cursor: pointer;
     width: 90%;
 }
+
+p.JournalForm-save-success{
+    font-size: 0.9em;
+    color: #48c774;
+    background-color: #effaf2;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 0.1rem 2rem 0.1rem 2rem;
+}
